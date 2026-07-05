@@ -29,6 +29,6 @@ Sprint 1 backlog'u oluşturulurken şu önceliklendirme mantığı izlenmiştir:
 - 
 ### 🔄 In Progress
 
-### 📋 To Do (Sprint 2'ye devrediliyor)
+### 📋 To Do
 
 ---
