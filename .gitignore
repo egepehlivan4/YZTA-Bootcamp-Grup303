@@ -1,0 +1,23 @@
+# Python
+__pycache__/
+*.pyc
+.venv/
+venv/
+*.egg-info/
+.pytest_cache/
+
+# Ortam değişkenleri (gizli anahtarlar)
+.env
+
+# Çalışma zamanı verisi / model artifact'leri
+data/*.db
+data/*.db-journal
+data/*.db-wal
+data/*.db-shm
+data/uploads/
+artifacts/*.joblib
+artifacts/*.pt
+
+# IDE / OS
+.DS_Store
+.idea/

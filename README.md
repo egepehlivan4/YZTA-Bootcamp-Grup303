@@ -66,13 +66,34 @@ Detaylı mimari için: [`docs/`](docs/) klasörüne bakınız.
 ```bash
 git clone <repo-url>
 cd floraguard
+python3 -m venv .venv && source .venv/bin/activate
 pip install -r requirements.txt
 
+cp .env.example .env   # ANTHROPIC_API_KEY ve JWT_SECRET_KEY'i doldurun
+
+# (opsiyonel ama önerilir) Regresyon modelini eğit — yoksa heuristic fallback kullanılır
+python -m src.models.train_regression
+
 # Backend
-uvicorn src.main:app --reload
+uvicorn src.api.main:app --reload
 
 # Frontend (ayrı terminalde)
-streamlit run src/app.py
+streamlit run src/ui/streamlit_app.py
+```
+
+Demo giriş bilgileri (RBAC test için): `ciftci1/ciftci123` (Çiftçi),
+`danisman1/danisman123` (Danışman), `admin1/admin123` (Admin).
+
+### Sprint 2 Mimarisi
+
+```
+src/
+├── models/    # CNN, LSTM, Ensemble, Regresyon (Scikit-learn)
+├── agent/     # Hafıza (SQLite), Tool tanımları, LangGraph Orkestratör Ajan
+├── security/  # JWT üretimi + Rol Bazlı Erişim Kontrolü (RBAC)
+├── api/       # FastAPI route'ları (auth, predict, history, weather)
+├── data/      # Paylaşılan şemalar, SQLite bağlantısı, hava durumu kaynağı
+└── ui/        # Streamlit arayüzü
 ```
 
 ## Sprint Dokümantasyonu
